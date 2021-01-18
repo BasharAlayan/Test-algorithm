@@ -1,10 +1,11 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "declaration": false,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
-    "declaration": false,
+    "skipLibCheck": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "module": "esnext",
