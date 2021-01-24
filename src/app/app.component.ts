@@ -16,12 +16,14 @@ export class AppComponent implements OnInit {
   isSubmitted = false;
 
   options = [
-    {option: 'Le point de fuite 1 est beaucoup plus précis que le point de fuite 2', note_algo_1: 4, note_algo_2: 0},
-    {option: 'Le point de fuite 1 est plus précis que le point de fuite 2', note_algo_1: 3, note_algo_2: 1},
-    {option: 'Le point de fuite 1 et  le point de fuite 2 sont aussi précis l\'un que l\'autre', note_algo_1: 2, note_algo_2: 2},
-    {option: 'Le point de fuite 2 est plus précis que le point de fuite 1', note_algo_1: 0, note_algo_2: 3},
-    {option: 'Le point de fuite 2 est beaucoup plus précis que le point de fuite 1', note_algo_1: 0, note_algo_2: 4}
+    {option: 'Le point de fuite 1 est beaucoup plus précis que le point de fuite 2', note_algo_1: 10, note_algo_2: 0},
+    {option: 'Le point de fuite 1 est plus précis que le point de fuite 2', note_algo_1: 7, note_algo_2: 3},
+    {option: 'Le point de fuite 1 et  le point de fuite 2 sont aussi précis l\'un que l\'autre', note_algo_1: 10, note_algo_2: 10},
+    {option: 'Le point de fuite 2 est plus précis que le point de fuite 1', note_algo_1: 3, note_algo_2: 7},
+    {option: 'Le point de fuite 2 est beaucoup plus précis que le point de fuite 1', note_algo_1: 0, note_algo_2: 10},
+    {option: 'Le point de fuite 2 et le point de fuite 1 ne sont pas précis', note_algo_1: 0, note_algo_2: 0}
   ];
+
   allData: { img_algo_1: string; img_algo_2: string; note_algo2: number; key: string; status: boolean; note_algo1: number; option: string }[];
   currentdata = null;
   currentIndex = -1;
