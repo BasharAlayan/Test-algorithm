@@ -24,10 +24,10 @@ export class AppComponent implements OnInit {
     {option: 'Le point de fuite 2 et le point de fuite 1 ne sont pas précis', note_algo_1: 0, note_algo_2: 0}
   ];
 
-  allData: { img_algo_1: string; img_algo_2: string; note_algo2: number; key: string; status: boolean; note_algo1: number; option: string }[];
   currentdata = null;
   currentIndex = -1;
   selectForm: FormGroup;
+  private allData: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string }[];
 
   constructor(private dataService: DataService, private fb: FormBuilder) {
   }
