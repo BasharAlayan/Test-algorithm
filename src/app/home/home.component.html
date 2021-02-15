@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 col-sm-6 col-12" *ngFor="let data of allData; ">
+      <div *ngIf=!data.status>
+
+        <button routerLinkActive="active" type="button" class="btn btn-secondary" [routerLink]="['/detail',data.key]"
+                [queryParams]="data">  {{data.key}}</button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="container-fluid">
+
+    <div class="col-md-12 col">
+
+      <div class="row">
+        <div class="d-flex justify-content-center"><img alt="logo" width="180"
+                                                        class="logo"
+                                                        src="https://upload.wikimedia.org/wikipedia/fr/thumb/2/2c/Universit%C3%A9_Panth%C3%A9on-Sorbonne_%28depuis_janvier_2015%29.svg/langfr-280px-Universit%C3%A9_Panth%C3%A9on-Sorbonne_%28depuis_janvier_2015%29.svg.png">
+        </div>
+        <br>
+
+        <div class="d-flex justify-content-center" style="margin-top: 10px; color: #c1daec"><h6>© 2021 Bashar Alayan</h6></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

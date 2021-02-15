@@ -8,10 +8,24 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment.prod';
 
 import { AppComponent } from './app.component';
+import { CompareComponent } from './compare/compare.component';
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { AllImagesComponent } from './all-images/all-images.component';
+import { TestedComponent } from './tested/tested.component';
+import { AllComponent } from './all/all.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CompareComponent,
+    AboutComponent,
+    HomeComponent,
+    AllImagesComponent,
+    TestedComponent,
+    AllComponent
   ],
   imports: [
     BrowserModule,
@@ -19,9 +33,12 @@ import { AppComponent } from './app.component';
     AngularFireDatabaseModule,
     FormsModule,
     AppRoutingModule,
+    NgbPaginationModule,
+    NgbAlertModule,
     ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

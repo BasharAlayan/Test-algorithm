@@ -1,0 +1,127 @@
+<div class="container-fluid">
+  <div *ngIf="result!=''">
+    <div class="d-flex justify-content-center">
+
+      <h3>{{result}}</h3>s
+    </div>
+  </div>
+
+
+  <div *ngIf="status.toString()=='true'">
+    <div class="d-flex justify-content-center">
+
+      <h3>Votre option est : {{option}}</h3>
+    </div>
+  </div>
+
+
+  <div class="row grid-columns">
+
+    <div class="col-md-1 col">
+      <div>
+        <div class="d-flex justify-content-center"><h3>No.</h3></div>
+      </div>
+    </div>
+    <div class="col-md-1 col">
+      <div>
+        <div class="d-flex justify-content-center"><h3>Statut</h3></div>
+      </div>
+    </div>
+    <div class="col-md-5 col">
+      <div>
+        <div class="d-flex justify-content-center"><h3>Point de fuite 1</h3></div>
+      </div>
+    </div>
+    <div class="col-md-5 col ">
+      <div>
+        <div class="d-flex justify-content-center"><h3>Point de fuite 2</h3></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-12 ">
+
+    <div class="row grid-columns">
+
+      <div class="col-md-1 col">
+        <div>
+          <div class="d-flex justify-content-center"><b>{{id}}</b></div>
+        </div>
+      </div>
+      <div class="col-md-1 col">
+        <div *ngIf="status.toString()=='false'">
+
+          <div class="d-flex justify-content-center"><img class="img-fluid" alt="Responsive image"
+                                                          src="../assets/Images/not%20done%20icon.png"></div>
+        </div>
+
+        <div *ngIf="status.toString()=='true'" >
+
+          <div class="d-flex justify-content-center"><img class="img-fluid" alt="Responsive image"
+                                                          src="../assets/Images/icone_done.png"></div>
+        </div>
+      </div>
+      <div class="col-md-5  ">
+        <div>
+          <div class="d-flex justify-content-center"><img class="img-fluid" alt="Responsive image"
+                                                          src="{{image_algo_1}}"></div>
+        </div>
+      </div>
+      <div class="col-md-5   ">
+        <div>
+          <div class="d-flex justify-content-center"><img class="img-fluid" alt="Responsive image"
+                                                          src="{{image_algo_2}}"></div>
+        </div>
+      </div>
+      <div class="col-md-12 col ">
+        <div>
+
+          <div class="d-flex justify-content-center">
+
+            <form [formGroup]="selectForm" (ngSubmit)="onSubmit(data)">
+              <div class="form-group">
+
+                <div *ngFor="let option of options">
+                  <input formControlName="selectOptions" name="selectOptions" type="radio" [value]="option"
+                         [required]=true>
+                  <b>{{option.option}}</b>
+
+
+
+                </div>
+
+
+              </div>
+              <div class="d-flex justify-content-center">
+
+                <button type="submit" class="btn btn-success   btn-lg btn-block" >Valider</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid">
+
+    <div class="col-md-12 col">
+
+      <div class="row">
+        <div class="d-flex justify-content-center"><img alt="logo" width="180"
+                                                        class="logo"
+                                                        src="https://upload.wikimedia.org/wikipedia/fr/thumb/2/2c/Universit%C3%A9_Panth%C3%A9on-Sorbonne_%28depuis_janvier_2015%29.svg/langfr-280px-Universit%C3%A9_Panth%C3%A9on-Sorbonne_%28depuis_janvier_2015%29.svg.png">
+        </div>
+        <br>
+
+        <div class="d-flex justify-content-center" style="margin-top: 10px; color: #c1daec"><h6>© 2021 Bashar Alayan</h6></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

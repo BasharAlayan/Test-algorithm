@@ -1,1 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
+.col {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+nav {
+  margin-bottom: 20px;
+  background-color: #192734;
+}
+
+.nav-item a{
+  font-weight: bold;
+  font-size: 15px;
+  color: #8899A6;
+}
+
+.navbarTitle{
+  margin-left: 10px;
+  font-weight: bold;
+
+}
+
+.col > div {
+  background-color: #192734;
+  height: 100%;
+  padding: 5px;
+  border-radius: 15px;
+  border: 1px solid #273d51;
+}
+
+b {
+  color: #b3c9da;
+  font-size: 15px;
+  margin: 20px;
+}
+
+h3 {
+  color: #b3c9da;
+  font-size: 18px;
+  margin: 20px;
+}
+
+
+h2 {
+  color: #b3c9da;
+  font-size: 25px;
+}
+
+body {
+  background-color: #15202B !important;
+}
+
+
+header {
+  padding: 0 15px;
+}
+
+
+footer {
+  padding: 0 15px;
+  background-color: #a9b1b2;
+  padding-bottom: 20px;
+
+}
+
+h5 {
+  color: #b3c9da;
+  font-size: 20px;
+  margin: 20px;
+
+}
+
+

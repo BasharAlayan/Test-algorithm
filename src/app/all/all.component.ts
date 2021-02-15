@@ -1,15 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {DataService} from './services/data.service';
+import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DataService} from '../services/data.service';
 import {map} from 'rxjs/operators';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-all',
+  templateUrl: './all.component.html',
+  styleUrls: ['./all.component.css']
 })
-
-export class AppComponent implements OnInit {
+export class AllComponent implements OnInit {
   isSubmitted = false;
 
 
