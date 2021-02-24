@@ -7,13 +7,15 @@ import {HomeComponent} from './home/home.component';
 import {AllImagesComponent} from './all-images/all-images.component';
 import {TestedComponent} from './tested/tested.component';
 import {AllComponent} from './all/all.component';
+import {ContactComponent} from './contact/contact.component';
 
 
 const routes: Routes = [
   {path: 'detail/:id', component: CompareComponent},
   {path: 'home', component: AllComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'all', component: AllImagesComponent},
+  //{path: 'all', component: AllImagesComponent},
+  {path: 'contact', component: ContactComponent},
   {path: 'tested', component: TestedComponent},
   {path: 'notTested', component: HomeComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},

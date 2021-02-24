@@ -24,7 +24,8 @@ export class TestedComponent implements OnInit {
   currentdata = null;
   currentIndex = -1;
   selectForm: FormGroup;
-  allData: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string }[];
+  allData: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string; problem:boolean }[];
+  all: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string; problem:boolean }[];
 
   constructor(private dataService: DataService, private fb: FormBuilder) {
   }
@@ -44,6 +45,7 @@ export class TestedComponent implements OnInit {
         )
       )).subscribe(data => {
       this.allData = data;
+      this.all = this.allData.filter(it => it.status );
     });
   }
 

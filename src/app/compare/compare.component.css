@@ -1,8 +1,18 @@
+
 button{
-  margin: 20px;
-  padding: 10px;
-  height: 50px;
-  width: 100px;
-  background-color: #16D298;
-  color: #273d51;
+  margin: 10px;
+}
+
+img{
+  border-radius: 15px;
+
+}
+.option{
+  margin: 5px;
+
+  background-color: #15202B;
+  padding: 5px;
+  border-radius: 15px;
+  border: 10px solid #15202B;
+
 }

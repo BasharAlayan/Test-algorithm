@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DataService} from '../services/data.service';
 import {map} from 'rxjs/operators';
+import {print} from 'util';
 
 @Component({
   selector: 'app-all',
@@ -24,7 +25,7 @@ export class AllComponent implements OnInit {
   currentdata = null;
   currentIndex = -1;
   selectForm: FormGroup;
-  allData: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string }[];
+  allData: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string; problem:boolean}[];
 
   constructor(private dataService: DataService, private fb: FormBuilder) {
   }
@@ -34,6 +35,8 @@ export class AllComponent implements OnInit {
       selectOptions: ['', [Validators.required]]
     });
     this.retrieveData();
+    console.log(this.allData);
+    console.log("============");
   }
 
   retrieveData(): void {
@@ -44,7 +47,11 @@ export class AllComponent implements OnInit {
         )
       )).subscribe(data => {
       this.allData = data;
+      console.log(this.allData)
+
+
     });
+    console.log(this.allData)
   }
 
   onSubmit(data) {

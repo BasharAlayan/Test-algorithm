@@ -60,6 +60,7 @@ export class AllImagesComponent implements OnInit {
       data.note_algo2 = noteAlgo2;
       data.option = option;
       data.status = true;
+
       console.log(data);
       this.dataService.update(data.key, data);
     }

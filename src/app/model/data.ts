@@ -1,8 +1,8 @@
 export class Data {
-  constructor(status: string, image_algo_1: string, image_algo_2: string, note_algo_1: string, note_algo_2: string, option: string, time_algo1: string, time_algo2: string) {
-    
-  }
+  constructor(status: string, image_algo_1: string, image_algo_2: string, note_algo_1: string, note_algo_2: string, option: string, time_algo1: string, time_algo2: string, id:string) {
 
+  }
+  id:string;
   status: boolean;
   image_algo_1: string;
   image_algo_2: string;
@@ -11,4 +11,5 @@ export class Data {
   option: string;
   time_algo1:string;
   time_algo2:string;
+  problem:boolean;
 }

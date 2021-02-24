@@ -8,6 +8,9 @@ import {AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular/
 import firebase from 'firebase';
 import DataSnapshot = firebase.database.DataSnapshot;
 import {HomeComponent} from '../home/home.component';
+import {Contact} from '../model/contact';
+import {ContactService} from '../services/contact.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-compare',
@@ -34,7 +37,7 @@ export class CompareComponent implements OnInit {
   selectForm: FormGroup;
 
   // allData: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string }[]
-  constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService, private fb: FormBuilder) {
+  constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService, private fb: FormBuilder, private contact: ContactService) {
   }
 
   data: Data;
@@ -47,6 +50,7 @@ export class CompareComponent implements OnInit {
   note_algo_1: string;
   note_algo_2: string;
   status: string;
+  problem: boolean;
 
 
   ngOnInit() {
@@ -55,6 +59,7 @@ export class CompareComponent implements OnInit {
     });
     this.route.url.subscribe(params => {
       this.id = params[1];
+
     });
     this.route.queryParams.subscribe(params => {
       this.image_algo_1 = params.image_algo_1;
@@ -65,6 +70,7 @@ export class CompareComponent implements OnInit {
       this.note_algo_1 = params.note_algo_1;
       this.note_algo_2 = params.note_algo_2;
       this.status = params.status;
+      this.problem=params.problem;
       this.data = new Data(
         this.status,
         this.image_algo_1,
@@ -73,7 +79,9 @@ export class CompareComponent implements OnInit {
         this.note_algo_2,
         this.option,
         this.time_algo1,
-        this.time_algo2);
+        this.time_algo2,
+        this.id);
+      console.log("=================")
     });
     if (this.isSubmitted){
       this.status="true";
@@ -96,11 +104,28 @@ export class CompareComponent implements OnInit {
       data.image_algo_2 = this.image_algo_2;
       data.time_algo_1 = this.time_algo1;
       data.time_algo_2 = this.time_algo2;
+      data.id=this.id.path;
       this.dataService.update(this.id.path, data);
       this.result = 'Votre option : "<' + option + '>" est  validée';
       this.router.navigate(['/notTested'])
+      swal({
+          icon: 'success',
+          title: 'Votre test pour l\'image '+ this.id.path+' a été envoyé',
+        }
+      );
 
     }
   }
 
+  SendProblem(id) {
+    const contactObject = new Contact("Erreur Technique : image : "+this.id.path, new Date().toISOString(), "Erreur image : "+this.id.path);
+    this.contact.add(contactObject);
+    this.dataService.update(this.id.path, {"problem":true});
+    this.router.navigate(['/notTested'])
+    swal({
+        icon: 'success',
+        title: 'Votre signale pour l\'image '+ this.id.path+' a été envoyé',
+      }
+    );
+  }
 }

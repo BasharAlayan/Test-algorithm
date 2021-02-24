@@ -1,0 +1,101 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<div class="container-fluid">
+
+
+  <div class="col-md-12 col">
+
+    <div>
+      <h1>Contact</h1>
+      <hr>
+      <form (ngSubmit)="onSubmit()" [formGroup]="formGroup">
+
+        <!--
+              <div [hidden]="name.valid || name.pristine"
+                   class="alert alert-danger">
+                Name is required
+              </div>
+
+        -->
+        <div class="row body-main-bg">
+
+          <div class="input-group">
+        <span class="input-group-text">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person"
+               viewBox="0 0 16 16">
+  <path
+    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+</svg>
+        </span>
+
+            <input type="text" class="form-control" id="name" placeholder="Nom"
+                   required
+                   formControlName="name" name="name"
+            >
+          </div>
+        </div>
+
+
+        <div class="form-group">
+
+
+        </div>
+
+
+        <br>
+
+        <!--
+
+              <div [hidden]="msg.valid || msg.pristine"
+                   class="alert alert-danger">
+                Message is required
+              </div>
+
+  -->
+        <div class="row body-main-bg">
+
+          <div class="input-group">
+              <span class="input-group-text">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil"
+           viewBox="0 0 16 16">
+        <path
+          d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+      </svg>
+              </span>
+
+
+            <textarea type="textarea" class="form-control" id="message"
+                      formControlName="message" name="message"
+                      rows="4" placeholder="Message">
+              </textarea>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-success" [disabled]="!formGroup.valid">Validez</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+
+  <div class="container-fluid">
+
+    <div class="col-md-12 col">
+
+      <div class="row">
+        <div class="d-flex justify-content-center"><img alt="logo" width="180"
+                                                        class="logo"
+                                                        src="https://upload.wikimedia.org/wikipedia/fr/thumb/2/2c/Universit%C3%A9_Panth%C3%A9on-Sorbonne_%28depuis_janvier_2015%29.svg/langfr-280px-Universit%C3%A9_Panth%C3%A9on-Sorbonne_%28depuis_janvier_2015%29.svg.png">
+        </div>
+        <br>
+
+        <div class="d-flex justify-content-center" style="margin-top: 10px; color: #c1daec"><h6>© 2021 Bashar
+          Alayan</h6></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

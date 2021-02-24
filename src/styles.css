@@ -11,7 +11,7 @@ nav {
 .nav-item a{
   font-weight: bold;
   font-size: 15px;
-  color: #8899A6;
+  color: #a2b6c6;
 }
 
 .navbarTitle{
@@ -29,20 +29,24 @@ nav {
 }
 
 b {
-  color: #b3c9da;
+  color: #d3ecff;
   font-size: 15px;
   margin: 20px;
 }
 
 h3 {
-  color: #b3c9da;
+  color: #d3ecff;
   font-size: 18px;
   margin: 20px;
 }
 
 
+h1 {
+  color: #c0d8ea;
+}
+
 h2 {
-  color: #b3c9da;
+  color: #d3ecff;
   font-size: 25px;
 }
 
@@ -58,13 +62,13 @@ header {
 
 footer {
   padding: 0 15px;
-  background-color: #a9b1b2;
+  background-color: #d3ecff;
   padding-bottom: 20px;
 
 }
 
 h5 {
-  color: #b3c9da;
+  color: #d3ecff;
   font-size: 20px;
   margin: 20px;
 
