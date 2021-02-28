@@ -11,7 +11,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class HomeComponent implements OnInit {
   isSubmitted = false;
 
-  options = [
+   options = [
     {option: 'Le point de fuite 1 est beaucoup plus précis que le point de fuite 2', note_algo_1: 10, note_algo_2: 0},
     {option: 'Le point de fuite 1 est plus précis que le point de fuite 2', note_algo_1: 7, note_algo_2: 3},
     {option: 'Le point de fuite 1 et  le point de fuite 2 sont aussi précis l\'un que l\'autre', note_algo_1: 5, note_algo_2: 5},
@@ -24,8 +24,8 @@ export class HomeComponent implements OnInit {
   currentdata = null;
   currentIndex = -1;
   selectForm: FormGroup;
-  allData: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string; problem:boolean }[];
-  all: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string; problem:boolean }[];
+  allData: { image_algo_1: string; image_algo_2: string; problem: boolean; time_algo_1: string; time_algo_2: string; id: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string }[];
+  all: { image_algo_1: string; image_algo_2: string; problem: boolean; time_algo_1: string; time_algo_2: string; id: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string }[];
 
   constructor(private dataService: DataService, private fb: FormBuilder) {
   }

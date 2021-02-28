@@ -1,16 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {map} from 'rxjs/operators';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DataService} from '../services/data.service';
 import {Data} from '../model/data';
-import {AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular/fire/database';
-import firebase from 'firebase';
-import DataSnapshot = firebase.database.DataSnapshot;
-import {HomeComponent} from '../home/home.component';
 import {Contact} from '../model/contact';
 import {ContactService} from '../services/contact.service';
-import swal from 'sweetalert';
+import {map} from 'rxjs/operators';
+import 'sweetalert2/dist/sweetalert2.min.css';
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-compare',
@@ -19,6 +17,7 @@ import swal from 'sweetalert';
 })
 export class CompareComponent implements OnInit {
   id;
+  number;
   isSubmitted = false;
 
   result = '';
@@ -35,12 +34,16 @@ export class CompareComponent implements OnInit {
   currentdata = null;
   currentIndex = -1;
   selectForm: FormGroup;
+  allData: { image_algo_1: string; image_algo_2: string; time_algo_1: string; time_algo_2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string; problem: boolean }[];
+  nextImage: { image_algo_1: string; image_algo_2: string; time_algo_1: string; time_algo_2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string; problem: boolean }[];
+
 
   // allData: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string }[]
   constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService, private fb: FormBuilder, private contact: ContactService) {
   }
 
   data: Data;
+  next: Data;
 
   image_algo_1: string;
   image_algo_2: string;
@@ -59,8 +62,9 @@ export class CompareComponent implements OnInit {
     });
     this.route.url.subscribe(params => {
       this.id = params[1];
-
+      this.number = params[2].path;
     });
+
     this.route.queryParams.subscribe(params => {
       this.image_algo_1 = params.image_algo_1;
       this.image_algo_2 = params.image_algo_2;
@@ -70,7 +74,7 @@ export class CompareComponent implements OnInit {
       this.note_algo_1 = params.note_algo_1;
       this.note_algo_2 = params.note_algo_2;
       this.status = params.status;
-      this.problem=params.problem;
+      this.problem = params.problem;
       this.data = new Data(
         this.status,
         this.image_algo_1,
@@ -81,14 +85,16 @@ export class CompareComponent implements OnInit {
         this.time_algo1,
         this.time_algo2,
         this.id);
-      console.log("=================")
+      console.log('=================');
     });
-    if (this.isSubmitted){
-      this.status="true";
+
+
+    if (this.isSubmitted) {
+      this.status = 'true';
     }
   }
 
-  onSubmit(data) {
+  onSubmit(data, index) {
     this.isSubmitted = true;
     if (!this.selectForm.valid) {
       return false;
@@ -104,28 +110,148 @@ export class CompareComponent implements OnInit {
       data.image_algo_2 = this.image_algo_2;
       data.time_algo_1 = this.time_algo1;
       data.time_algo_2 = this.time_algo2;
-      data.id=this.id.path;
+      data.id = this.id.path;
       this.dataService.update(this.id.path, data);
       this.result = 'Votre option : "<' + option + '>" est  validée';
-      this.router.navigate(['/notTested'])
-      swal({
+      Swal.fire({
           icon: 'success',
-          title: 'Votre test pour l\'image '+ this.id.path+' a été envoyé',
+          title: 'Votre choix pour l\'image ' + index + ' a été envoyé',
+        confirmButtonColor: '#141f29',
+        showCancelButton: true,
+        cancelButtonColor: '#141f29',
+        confirmButtonText: 'Retour à l\'accueil',
+        cancelButtonText: "Suivant",
         }
-      );
+      ).then((result) => {
 
+        if (!result.isConfirmed) {
+
+          this.dataService.getAll().snapshotChanges().pipe(
+            map(changes =>
+              changes.map(c =>
+                ({key: c.payload.key, ...c.payload.val()})
+              )
+            )).subscribe(data => {
+              this.allData = data.filter(it => !(it.status) && !(it.problem));
+
+
+              if (this.allData.length > 0) {
+                {
+
+
+                  this.router.navigate(['/detail/' + String(this.allData[0].key) + '/' + (this.allData[0].key[this.allData[0].key.length - 2] + this.allData[0].key[this.allData[0].key.length - 1])], {
+                    queryParams: {
+                      'key': String(this.allData[0].key),
+                      'image_algo_1': this.allData[0].image_algo_1,
+                      'image_algo_2': this.allData[0].image_algo_2,
+                      'note_algo_1': this.allData[0].note_algo_1,
+                      'note_algo_2': this.allData[0].note_algo_2,
+                      'option': this.allData[0].option,
+                      'status': this.allData[0].status,
+                      'time_algo_1': this.allData[0].time_algo_1,
+                      'time_algo_2': this.allData[0].time_algo_2,
+                      'problem': this.allData[0].problem,
+                    }
+                  }).then(() => {
+                    window.location.reload();
+                  });
+                }
+              }
+            }
+          );
+        }
+        else{
+          this.router.navigate(['notTested'])
+        }
+      });
+
+//  option=&status=false&time_algo1=0.023186445236206055&time_algo2=0.02792501449584961
+//  note_algo1=&note_algo2=&option=&status=false&time_algo_1=0.023186445236206055&time_algo_2=0.02792501449584961
+      /*
+           let newImage = this.getImageNotTested();
+           if(newImage.id==""){
+             console.log("Vide");
+           }
+           else{
+             console.log(newImage.id)
+             console.log(newImage.image_algo_1)
+             console.log('//////////////////');
+           }*
+
+            */
+      //this.router.navigate(['/notTested'])
     }
   }
 
-  SendProblem(id) {
-    const contactObject = new Contact("Erreur Technique : image : "+this.id.path, new Date().toISOString(), "Erreur image : "+this.id.path);
+  SendProblem(id, index) {
+    const contactObject = new Contact('Erreur Technique : image : ' + this.id.path, new Date().toISOString(), 'Erreur image : ' + this.id.path);
     this.contact.add(contactObject);
-    this.dataService.update(this.id.path, {"problem":true});
-    this.router.navigate(['/notTested'])
-    swal({
+    this.dataService.update(this.id.path, {'problem': true});
+    Swal.fire({
         icon: 'success',
-        title: 'Votre signale pour l\'image '+ this.id.path+' a été envoyé',
+        title: 'Votre signale pour l\'image ' + index + ' a été envoyé',
+
+
       }
     );
+    this.router.navigate(['/notTested']);
+  }
+
+  getImageNotTested(): Data {
+    let result;
+    result = new Data(
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+      '',
+    );
+
+    this.dataService.getAll().snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c =>
+          ({key: c.payload.key, ...c.payload.val()})
+        )
+      )).subscribe(data => {
+      this.allData = data.filter(it => !(it.status) && !(it.problem));
+      if (this.allData.length > 0) {
+        //console.log(this.allData);
+        //this.allData[0];
+
+
+        console.log(this.allData[0].key.toString());
+        this.next = new Data(
+          String(this.allData[0].status),
+          this.allData[0].image_algo_1,
+          this.allData[0].image_algo_2,
+          String(this.allData[0].note_algo_1),
+          String(this.allData[0].note_algo_2),
+          this.allData[0].option,
+          this.allData[0].time_algo_1,
+          this.allData[0].time_algo_2,
+          this.allData[0].key
+        );
+      }
+
+    });
+    return result;
   }
 }
+
+/*
+ this.next = new Data(
+              String(this.allData[0].status),
+              this.allData[0].image_algo_1,
+              this.allData[0].image_algo_2,
+              String(this.allData[0].note_algo_1),
+              String(this.allData[0].note_algo_2),
+              this.allData[0].option,
+              this.allData[0].time_algo1,
+              this.allData[0].time_algo2,
+              this.allData[0].key
+            );
+ */

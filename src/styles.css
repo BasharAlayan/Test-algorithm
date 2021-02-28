@@ -2,12 +2,19 @@
   margin-bottom: 15px;
   margin-top: 15px;
 }
-
-nav {
+.navbar-collapse.collapse.in {
+  display: block!important;
+}
+.nav {
   margin-bottom: 20px;
   background-color: #192734;
-}
 
+}
+.links{
+  font-size: 20px;
+  margin-right: 20px;
+  color: #d1ebff;
+}
 .nav-item a{
   font-weight: bold;
   font-size: 15px;

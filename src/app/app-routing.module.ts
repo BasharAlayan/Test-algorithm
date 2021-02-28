@@ -11,7 +11,7 @@ import {ContactComponent} from './contact/contact.component';
 
 
 const routes: Routes = [
-  {path: 'detail/:id', component: CompareComponent},
+  {path: 'detail/:id/:numero', component: CompareComponent},
   {path: 'home', component: AllComponent},
   {path: 'about', component: AboutComponent},
   //{path: 'all', component: AllImagesComponent},

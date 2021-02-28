@@ -3,7 +3,7 @@ import {Contact} from '../model/contact';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ContactService} from '../services/contact.service';
 import {Router} from '@angular/router';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-contact',
@@ -35,7 +35,7 @@ export class ContactComponent implements OnInit {
     this.contact.add(contactObject);
     this.formGroup.reset();
 
-    swal({
+    Swal.fire({
         icon: 'success',
         title: 'Votre message a été envoyé',
       }

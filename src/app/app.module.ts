@@ -27,7 +27,7 @@ import { ContactComponent } from './contact/contact.component';
     AllImagesComponent,
     TestedComponent,
     AllComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
