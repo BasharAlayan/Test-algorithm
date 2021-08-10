@@ -34,8 +34,9 @@ export class CompareComponent implements OnInit {
   currentdata = null;
   currentIndex = -1;
   selectForm: FormGroup;
-  allData: { image_algo_1: string; image_algo_2: string; time_algo_1: string; time_algo_2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string; problem: boolean }[];
-  nextImage: { image_algo_1: string; image_algo_2: string; time_algo_1: string; time_algo_2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string; problem: boolean }[];
+  allData: { image_algo_1: string; image_algo_2: string; problem: boolean; time_algo_1: string; time_algo_2: string; id: string; note_algo1: number; note_algo2: number; key: string; status: boolean; option: string }[];
+  nextImage: { image_algo_1: string; image_algo_2: string; problem: boolean; time_algo_1: string; time_algo_2: string; id: string; note_algo1: number; note_algo2: number; key: string; status: boolean; option: string }[];
+
 
 
   // allData: { image_algo_1: string; image_algo_2: string; time_algo1: string; time_algo2: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string }[]
@@ -54,6 +55,7 @@ export class CompareComponent implements OnInit {
   note_algo_2: string;
   status: string;
   problem: boolean;
+  revese: string;
 
 
   ngOnInit() {
@@ -63,30 +65,32 @@ export class CompareComponent implements OnInit {
     this.route.url.subscribe(params => {
       this.id = params[1];
       this.number = params[2].path;
+      this.revese = params[3].path;
     });
 
     this.route.queryParams.subscribe(params => {
-      this.image_algo_1 = params.image_algo_1;
-      this.image_algo_2 = params.image_algo_2;
-      this.time_algo1 = params.time_algo_1;
-      this.time_algo2 = params.time_algo_2;
-      this.option = params.option;
-      this.note_algo_1 = params.note_algo_1;
-      this.note_algo_2 = params.note_algo_2;
-      this.status = params.status;
-      this.problem = params.problem;
-      this.data = new Data(
-        this.status,
-        this.image_algo_1,
-        this.image_algo_2,
-        this.note_algo_1,
-        this.note_algo_2,
-        this.option,
-        this.time_algo1,
-        this.time_algo2,
-        this.id);
-      console.log('=================');
-    });
+
+        this.image_algo_1 = params.image_algo_1;
+        this.image_algo_2 = params.image_algo_2;
+        this.time_algo1 = params.time_algo_1;
+        this.time_algo2 = params.time_algo_2;
+        this.option = params.option;
+        this.note_algo_1 = params.note_algo_1;
+        this.note_algo_2 = params.note_algo_2;
+        this.status = params.status;
+        this.problem = params.problem;
+        this.data = new Data(
+          this.status,
+          this.image_algo_1,
+          this.image_algo_2,
+          this.note_algo_1,
+          this.note_algo_2,
+          this.option,
+          this.time_algo1,
+          this.time_algo2,
+          this.id);
+        console.log('=================');
+      });
 
 
     if (this.isSubmitted) {
@@ -99,32 +103,57 @@ export class CompareComponent implements OnInit {
     if (!this.selectForm.valid) {
       return false;
     } else {
-      const noteAlgo1 = this.selectForm.get('selectOptions').value.note_algo_1;
-      const noteAlgo2 = this.selectForm.get('selectOptions').value.note_algo_2;
-      const option = this.selectForm.get('selectOptions').value.option;
-      data.note_algo1 = noteAlgo1;
-      data.note_algo2 = noteAlgo2;
-      data.option = option;
-      data.status = true;
-      data.image_algo_1 = this.image_algo_1;
-      data.image_algo_2 = this.image_algo_2;
-      data.time_algo_1 = this.time_algo1;
-      data.time_algo_2 = this.time_algo2;
-      data.id = this.id.path;
-      this.dataService.update(this.id.path, data);
-      this.result = 'Votre option : "<' + option + '>" est  validée';
+      if(this.revese=="true"){
+
+        const noteAlgo1 = this.selectForm.get('selectOptions').value.note_algo_2;
+        const noteAlgo2 = this.selectForm.get('selectOptions').value.note_algo_1;
+        const option = this.selectForm.get('selectOptions').value.option;
+        data.note_algo1 = noteAlgo1;
+        data.note_algo2 = noteAlgo2;
+        data.option = option;
+        data.status = true;
+        data.image_algo_1 = this.image_algo_2;
+        data.image_algo_2 = this.image_algo_1;
+        data.time_algo_1 = this.time_algo2;
+        data.time_algo_2 = this.time_algo1;
+        data.id = this.id.path;
+        data.revese=this.revese;
+        this.dataService.update(this.id.path, data);
+        this.result = 'Votre option : "<' + option + '>" est  validée';
+      }
+      else{
+
+        const noteAlgo1 = this.selectForm.get('selectOptions').value.note_algo_1;
+        const noteAlgo2 = this.selectForm.get('selectOptions').value.note_algo_2;
+        const option = this.selectForm.get('selectOptions').value.option;
+        data.note_algo1 = noteAlgo1;
+        data.note_algo2 = noteAlgo2;
+        data.option = option;
+        data.status = true;
+        data.image_algo_1 = this.image_algo_1;
+        data.image_algo_2 = this.image_algo_2;
+        data.time_algo_1 = this.time_algo1;
+        data.time_algo_2 = this.time_algo2;
+        data.id = this.id.path;
+        data.revese=this.revese;
+        this.dataService.update(this.id.path, data);
+        this.result = 'Votre option : "<' + option + '>" est  validée';
+      }
+
+
+
       Swal.fire({
           icon: 'success',
           title: 'Votre choix pour l\'image ' + index + ' a été envoyé',
         confirmButtonColor: '#141f29',
         showCancelButton: true,
-        cancelButtonColor: '#141f29',
-        confirmButtonText: 'Retour à l\'accueil',
-        cancelButtonText: "Suivant",
+        cancelButtonColor: '#213343',
+        cancelButtonText: 'Retour à l\'accueil',
+        confirmButtonText: "Suivant",
         }
       ).then((result) => {
 
-        if (!result.isConfirmed) {
+        if (result.isConfirmed) {
 
           this.dataService.getAll().snapshotChanges().pipe(
             map(changes =>
@@ -136,21 +165,20 @@ export class CompareComponent implements OnInit {
 
 
               if (this.allData.length > 0) {
+                const index = Math.floor(Math.random() * this.allData.length);
                 {
-
-
-                  this.router.navigate(['/detail/' + String(this.allData[0].key) + '/' + (this.allData[0].key[this.allData[0].key.length - 2] + this.allData[0].key[this.allData[0].key.length - 1])], {
+                  this.router.navigate(['/detail/' + String(this.allData[index].key) + '/' + (this.allData[index].key[this.allData[index].key.length - 2] + this.allData[index].key[this.allData[index].key.length - 1])], {
                     queryParams: {
-                      'key': String(this.allData[0].key),
-                      'image_algo_1': this.allData[0].image_algo_1,
-                      'image_algo_2': this.allData[0].image_algo_2,
-                      'note_algo_1': this.allData[0].note_algo_1,
-                      'note_algo_2': this.allData[0].note_algo_2,
-                      'option': this.allData[0].option,
-                      'status': this.allData[0].status,
-                      'time_algo_1': this.allData[0].time_algo_1,
-                      'time_algo_2': this.allData[0].time_algo_2,
-                      'problem': this.allData[0].problem,
+                      'key': String(this.allData[index].key),
+                      'image_algo_1': this.allData[index].image_algo_1,
+                      'image_algo_2': this.allData[index].image_algo_2,
+                      'note_algo_1': this.allData[index].note_algo1,
+                      'note_algo_2': this.allData[index].note_algo2,
+                      'option': this.allData[index].option,
+                      'status': this.allData[index].status,
+                      'time_algo_1': this.allData[index].time_algo_1,
+                      'time_algo_2': this.allData[index].time_algo_2,
+                      'problem': this.allData[index].problem,
                     }
                   }).then(() => {
                     window.location.reload();
@@ -228,8 +256,8 @@ export class CompareComponent implements OnInit {
           String(this.allData[0].status),
           this.allData[0].image_algo_1,
           this.allData[0].image_algo_2,
-          String(this.allData[0].note_algo_1),
-          String(this.allData[0].note_algo_2),
+          String(this.allData[0].note_algo1),
+          String(this.allData[0].note_algo2),
           this.allData[0].option,
           this.allData[0].time_algo_1,
           this.allData[0].time_algo_2,

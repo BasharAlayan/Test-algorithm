@@ -67,183 +67,189 @@
       </div>
     </div>
   </div>
-
-
-
-
   <form [formGroup]="selectForm" (ngSubmit)="onSubmit(data,number)">
-          <div class="form-group">
-            <div class="row grid-columns">
-              <div class="col-md-4 col">
-                <div>
-                  <div class="d-flex justify-content-center"><h3> <div class="option">
+    <div class="form-group">
+      <div class="row grid-columns">
+        <div class="col-md-4 col">
+          <div>
+            <div class="d-flex justify-content-center">
+              <h3>
+                <div class="option">
 
-                    <input formControlName="selectOptions" name="selectOptions" type="radio"
-                           class="form-check-input"
-                           [value]="options[0]"
-                           [required]=true>
-                    <b>
-                      <span style="font-size: 15px; color: white">{{options[0].option}}</span>
-                    </b>
-                  </div></h3></div>
+                  <input formControlName="selectOptions" name="selectOptions" type="radio"
+                         class="form-check-input"
+                         [value]="options[0]"
+                         [required]=true>
+                  <b>
+                    <span style="font-size: 15px; color: white">{{options[0].option}}</span>
+                  </b>
                 </div>
-
-              </div>
-              <div class="col-md-4 col ">
-                <div>
-                  <div class="d-flex justify-content-center"><h3>
-                    <div class="option">
-
-                      <input formControlName="selectOptions" name="selectOptions" type="radio"
-                             class="form-check-input"
-                             [value]="options[1]"
-                             [required]=true>
-                      <b>
-                        <span style="font-size: 15px; color: white">{{options[1].option}}</span>
-                      </b>
-                    </div>
-                  </h3></div>
-                </div>
-              </div>
-              <div class="col-md-4 col ">
-                <div>
-                  <div class="d-flex justify-content-center"><h3>
-                    <div class="option">
-
-                      <input formControlName="selectOptions" name="selectOptions" type="radio"
-                             class="form-check-input"
-                             [value]="options[2]"
-                             [required]=true>
-                      <b>
-                        <span style="font-size: 15px; color: white">{{options[2].option}}</span>
-                      </b>
-                    </div>
-                  </h3></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row grid-columns">
-              <div class="col-md-4 col">
-                <div>
-                  <div class="d-flex justify-content-center"><h3>
-                    <div class="option">
-
-                      <input formControlName="selectOptions" name="selectOptions" type="radio"
-                             class="form-check-input"
-                             [value]="options[5]"
-                             [required]=true>
-                      <b>
-                        <span style="font-size: 15px; color: white">{{options[5].option}}</span>
-                      </b>
-                    </div>
-                  </h3></div>
-                </div>
-
-              </div>
-              <div class="col-md-4 col ">
-                <div>
-                  <div class="d-flex justify-content-center"><h3>
-                    <div class="option">
-
-                      <input formControlName="selectOptions" name="selectOptions" type="radio"
-                             class="form-check-input"
-                             [value]="options[4]"
-                             [required]=true>
-                      <b>
-                        <span style="font-size: 15px; color: white">{{options[4].option}}</span>
-                      </b>
-                    </div>
-                  </h3></div>
-                </div>
-              </div>
-              <div class="col-md-4 col ">
-                <div>
-                  <div class="d-flex justify-content-center"><h3>
-                    <div class="option">
-
-                      <input formControlName="selectOptions" name="selectOptions" type="radio"
-                             class="form-check-input"
-                             [value]="options[3]"
-                             [required]=true>
-                      <b>
-                        <span style="font-size: 15px; color: white">{{options[3].option}}</span>
-                      </b>
-                    </div>
-                  </h3></div>
-                </div>
-              </div>
-            </div>
-
-
-
-
-            <!--
-                           <div *ngFor="let option of options">
-                             <div class="option">
-
-
-
-
-                                                   <input formControlName="selectOptions" name="selectOptions" type="radio" class="form-check-input"
-                                                          [value]="option"
-                                                          [required]=true>
-                                                   <b>
-                                                     <span style="font-size: 16px">{{option.option}}</span>
-                                                   </b>
-                                                 </div>
-
-              </div>
-          </div>
-                                                -->
-
-
-            <div class="container-fluid">
-
-              <div class="col-md-12 col">
-
-                <div class="row">
-
-                  <button type="submit" class="btn btn-success btn-lg btn-block btnStyle" [disabled]="problem">Valider
-
-                  </button>
-
-                  <button (click)="SendProblem(data.id,number)" class="btn btn-danger  btn-lg btn-block btnStyle"
-                          [disabled]="problem">
-                    Signaler un problème
-                  </button>
-                </div>
-
-              </div>
+              </h3>
             </div>
           </div>
 
-        </form>
+        </div>
+        <div class="col-md-4 col ">
+          <div>
+            <div class="d-flex justify-content-center">
+              <h3>
+                <div class="option">
 
+                  <input formControlName="selectOptions" name="selectOptions" type="radio"
+                         class="form-check-input"
+                         [value]="options[1]"
+                         [required]=true>
+                  <b>
+                    <span style="font-size: 15px; color: white">{{options[1].option}}</span>
+                  </b>
+                </div>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col ">
+          <div>
+            <div class="d-flex justify-content-center">
+              <h3>
+                <div class="option">
 
+                  <input formControlName="selectOptions" name="selectOptions" type="radio"
+                         class="form-check-input"
+                         [value]="options[2]"
+                         [required]=true>
+                  <b>
+                    <span style="font-size: 15px; color: white">{{options[2].option}}</span>
+                  </b>
+                </div>
+              </h3>
+            </div>
+          </div>
+        </div>
       </div>
 
-  <div class="container-fluid">
+      <div class="row grid-columns">
+        <div class="col-md-4 col">
+          <div>
+            <div class="d-flex justify-content-center">
+              <h3>
+                <div class="option">
 
-    <div class="col-md-12 col">
-      <div class="grid ">
+                  <input formControlName="selectOptions" name="selectOptions" type="radio"
+                         class="form-check-input" style="font-size: 25px"
+                         [value]="options[5]"
+                         [required]=true>
+                  <b>
+                    <span style="font-size: 15px; color: white">{{options[5].option}}</span>
+                  </b>
+                </div>
+              </h3>
+            </div>
+          </div>
 
-      <div class=" align-items-center">
-        <div class="d-flex justify-content-center"><img alt="logo" width="200"
-                                                        class="logo"     src="assets/Images/paris1.png">
+        </div>
+        <div class="col-md-4 col ">
+          <div>
+            <div class="d-flex justify-content-center">
+              <h3>
+                <div class="option">
+
+                  <input formControlName="selectOptions" name="selectOptions" type="radio"
+                         class="form-check-input"
+                         [value]="options[4]"
+                         [required]=true>
+                  <b>
+                    <span style="font-size: 15px; color: white">{{options[4].option}}</span>
+                  </b>
+                </div>
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col ">
+          <div>
+            <div class="d-flex justify-content-center">
+              <h3>
+                <div class="option">
+
+                  <input formControlName="selectOptions" name="selectOptions" type="radio"
+                         class="form-check-input"
+                         [value]="options[3]"
+                         [required]=true>
+                  <b>
+                    <span style="font-size: 15px; color: white">{{options[3].option}}</span>
+                  </b>
+                </div>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--
+                     <div *ngFor="let option of options">
+                       <div class="option">
+
+
+
+
+                                             <input formControlName="selectOptions" name="selectOptions" type="radio" class="form-check-input"
+                                                    [value]="option"
+                                                    [required]=true>
+                                             <b>
+                                               <span style="font-size: 16px">{{option.option}}</span>
+                                             </b>
+                                           </div>
+
+        </div>
+    </div>
+                                          -->
+
+
+      <div class="container-fluid">
+
+        <div class="col-md-12 col">
+
+          <div class="row">
+
+            <button type="submit" class="btn btn-success btn-lg btn-block btnStyle" [disabled]="problem">Valider
+
+            </button>
+
+            <button (click)="SendProblem(data.id,number)" class="btn btn-danger  btn-lg btn-block btnStyle"
+                    [disabled]="problem">
+              Signaler un problème
+            </button>
+          </div>
 
         </div>
       </div>
-        <div class="align-items-center">
+
+    </div>
+
+  </form>
+
+
+</div>
+<div class="container-fluid">
+
+  <div class="col-md-12 col">
+    <div class="grid ">
+
+      <div class=" align-items-center">
+        <div class="d-flex justify-content-center"><img alt="logo" width="200"
+                                                        class="logo" src="assets/Images/paris1.png">
+
+        </div>
+      </div>
+      <div class="align-items-center">
 
         <div><br></div>
-        <div class="d-flex justify-content-center"  ><h4>© 2021 Bashar
+        <div class="d-flex justify-content-center"><h4>© 2021 Bashar
           Alayan</h4></div>
       </div>
     </div>
-    </div>
-
   </div>
+
+</div>
 
 
 

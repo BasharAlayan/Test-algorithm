@@ -25,7 +25,7 @@ export class AllComponent implements OnInit {
   currentdata = null;
   currentIndex = -1;
   selectForm: FormGroup;
-  allData: { image_algo_1: string; image_algo_2: string; problem: boolean; time_algo_1: string; time_algo_2: string; id: string; note_algo_1: number; note_algo_2: number; key: string; status: boolean; option: string }[];
+  allData: { image_algo_1: string; image_algo_2: string; problem: boolean; time_algo_1: string; time_algo_2: string; id: string; note_algo1: number; note_algo2: number; key: string; status: boolean; option: string }[];
 
   constructor(private dataService: DataService, private fb: FormBuilder) {
   }
@@ -35,8 +35,6 @@ export class AllComponent implements OnInit {
       selectOptions: ['', [Validators.required]]
     });
     this.retrieveData();
-    console.log(this.allData);
-    console.log("============");
   }
 
   retrieveData(): void {
@@ -54,22 +52,7 @@ export class AllComponent implements OnInit {
     console.log(this.allData)
   }
 
-  onSubmit(data) {
-    this.isSubmitted = true;
-    if (!this.selectForm.valid) {
-      return false;
-    } else {
-      const noteAlgo1 = this.selectForm.get('selectOptions').value.note_algo_1;
-      const noteAlgo2 = this.selectForm.get('selectOptions').value.note_algo_2;
-      const option = this.selectForm.get('selectOptions').value.option;
-      data.note_algo1 = noteAlgo1;
-      data.note_algo2 = noteAlgo2;
-      data.option = option;
-      data.status = true;
-      console.log(data);
-      this.dataService.update(data.key, data);
-    }
-  }
+
 
   // Getter method to access formcontrols
   get optionSelected() {

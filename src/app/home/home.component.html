@@ -26,8 +26,16 @@
     <div class="col-sm-auto-1" *ngFor="let data of all;  index as i ">
       <div *ngIf=!data.status>
 
-        <button routerLinkActive="active" type="button" class="btn btn-secondary" [routerLink]="['/detail',data.key,i+1]"
-                [queryParams]="data">  {{i+1}}</button>
+        <div *ngIf="data.id%3==0">
+          <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                  [routerLink]="['/detail',data.key,i+1,true]"
+                  [queryParams]="data">  {{i + 1}}</button>
+        </div>
+        <div *ngIf="data.id%3!=0">
+          <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                  [routerLink]="['/detail',data.key,i+1,false]"
+                  [queryParams]="data">  {{i + 1}}</button>
+        </div>
      </div>
     </div>
   </div>

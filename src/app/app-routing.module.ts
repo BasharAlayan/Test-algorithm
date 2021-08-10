@@ -8,16 +8,18 @@ import {AllImagesComponent} from './all-images/all-images.component';
 import {TestedComponent} from './tested/tested.component';
 import {AllComponent} from './all/all.component';
 import {ContactComponent} from './contact/contact.component';
+import {AnalysisComponent} from './analysis/analysis.component';
 
 
 const routes: Routes = [
-  {path: 'detail/:id/:numero', component: CompareComponent},
+  {path: 'detail/:id/:numero/:reverse', component: CompareComponent},
   {path: 'home', component: AllComponent},
   {path: 'about', component: AboutComponent},
   //{path: 'all', component: AllImagesComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'tested', component: TestedComponent},
   {path: 'notTested', component: HomeComponent},
+  {path: 'analyses', component: AnalysisComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 

@@ -17,44 +17,53 @@
         </div>
       </div>
     </div>
-  </div><div class="container-fluid">
-
-<div class="col-md-12 col">
-
-  <div class="row justify-content-md-center">
-
-
-    <div class="col-sm-auto-1" *ngFor="let data of all; index as i">
-
-      <div *ngIf=data.status>
-        <button routerLinkActive="active" type="button" class="btn btn-secondary" [routerLink]="['/detail',data.key,i+1]"
-                [queryParams]="data">  {{i+1}}</button>
-      </div>
-
-    </div>
   </div>
-  </div>
-</div>
-
-
+  <div class="container-fluid">
 
     <div class="col-md-12 col">
-      <div class="grid ">
 
-        <div class=" align-items-center">
-          <div class="d-flex justify-content-center"><img alt="logo" width="200"
-                                                          class="logo"     src="assets/Images/paris1.png">
+      <div class="row justify-content-md-center">
 
+
+        <div class="col-sm-auto-1" *ngFor="let data of all; index as i">
+
+          <div *ngIf=data.status>
+
+            <div *ngIf="data.id%3==0">
+              <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                      [routerLink]="['/detail',data.key,i+1,true]"
+                      [queryParams]="data">  {{i + 1}}</button>
+            </div>
+            <div *ngIf="data.id%3!=0">
+              <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                      [routerLink]="['/detail',data.key,i+1,false]"
+                      [queryParams]="data">  {{i + 1}}</button>
+            </div>
           </div>
-        </div>
-        <div class="align-items-center">
 
-          <div><br></div>
-          <div class="d-flex justify-content-center"  ><h3>© 2021 Bashar
-            Alayan</h3></div>
         </div>
       </div>
     </div>
+  </div>
+
+
+  <div class="col-md-12 col">
+    <div class="grid ">
+
+      <div class=" align-items-center">
+        <div class="d-flex justify-content-center"><img alt="logo" width="200"
+                                                        class="logo" src="assets/Images/paris1.png">
+
+        </div>
+      </div>
+      <div class="align-items-center">
+
+        <div><br></div>
+        <div class="d-flex justify-content-center"><h3>© 2021 Bashar
+          Alayan</h3></div>
+      </div>
+    </div>
+  </div>
 
 </div>
 

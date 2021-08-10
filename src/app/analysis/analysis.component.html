@@ -1,0 +1,250 @@
+<div class="container-fluid">
+
+  <div class="container-fluid">
+
+
+    <div class="col-md-12 col">
+      <div class="row justify-content-md-center">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+               aria-selected="true"><h2>New Algorithm is better</h2></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+               aria-selected="false"><h2>Old algorithm is better</h2></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+               aria-selected="false"><h2>Both are null</h2></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="same-tab" data-toggle="tab" href="#same" role="tab" aria-controls="same"
+               aria-selected="false"><h2>Both are good</h2></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="container-fluid">
+        <div class="row justify-content-md-center">
+          <h3>New algorithm is better </h3>
+        </div>
+
+        <div class="col-md-12 col">
+          <div class="row justify-content-md-center">
+
+            <div class="col-sm-auto-1" *ngFor="let data of newIsBetter; index as i">
+
+              <!--
+                <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                        [routerLink]="['/detail',data.key,i+1]"
+                        [queryParams]="data">  {{i + 1}}</button>
+              -->
+            <!--  <button type="submit" class="btn btn-secondary"(click)="details(data.key, data)">{{i + 1}}</button>-->
+
+              <!-- Button to Trigger the Modal -->
+
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#sampleModaljj">
+                {{i + 1}}
+              </button>
+              <!--Bootstrap Modal-->
+              <div class="modal" id="sampleModal">
+                <div class="modal-dialog modal-xl modal-dialog-scrollable" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal-content">
+
+
+
+
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">{{i + 1}}</h4>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <div class="col-md-12 ">
+
+                        <div class="row grid-columns">
+
+                          <div class="col-md-6  ">
+                            <div>
+                              <div class="d-flex justify-content-center"><img class="card-img" alt="Responsive image"
+                                                                              src="{{data.image_algo_1}}"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div>
+                              <div class="d-flex justify-content-center"><img class="card-img" alt="Responsive image"
+                                                                              src="{{data.image_algo_2}}"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="container-fluid">
+
+
+
+        <div class="row justify-content-md-center">
+          <ul class="nav nav-tabs" id="myTabBAD" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link" id="allBad-tab" data-toggle="tab" href="#allBad" role="tab" aria-controls="allBad"
+                 aria-selected="true"><h3>All</h3></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="7BAD-tab" data-toggle="tab" href="#7BAD" role="tab" aria-controls="7BAD"
+                 aria-selected="false"><h3>Old algorithm is better</h3></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="10BAD-tab" data-toggle="tab" href="#10BAD" role="tab" aria-controls="10BAD"
+                 aria-selected="false"><h3>Old algorithm is much better</h3></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="tab-content" id="myTabBAD-content">
+          <div class="tab-pane fade show active" id="allBad" role="tabpanel" aria-labelledby="allBad-tab">
+            <div class="col-md-12 col">
+              <div class="row justify-content-md-center">
+                <div class="col-sm-auto-1" *ngFor="let data of all; index as i">
+                  <div *ngIf=data.status>
+                    <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                            [routerLink]="['/detail',data.key,i+1]"
+                            [queryParams]="data">  {{i + 1}}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade show active" id="7BAD" role="tabpanel" aria-labelledby="7BAD-tab">
+            <div class="col-md-12 col">
+              <div class="row justify-content-md-center">
+                <div class="col-sm-auto-1" *ngFor="let data of all7BAD; index as i">
+                  <div *ngIf=data.status>
+                    <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                            [routerLink]="['/detail',data.key,i+1]"
+                            [queryParams]="data">  {{i + 1}}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade show active" id="10BAD" role="tabpanel" aria-labelledby="10BAD-tab">
+            <div class="col-md-12 col">
+              <div class="row justify-content-md-center">
+                <div class="col-sm-auto-1" *ngFor="let data of all10BAD; index as i">
+                  <div *ngIf=data.status>
+                    <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                            [routerLink]="['/detail',data.key,i+1]"
+                            [queryParams]="data">  {{i + 1}}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+    <div class="tab-pane fade show" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+
+      <div class="container-fluid">
+        <div class="row justify-content-md-center">
+          <h3>Both algorithms are bad </h3>
+        </div>
+
+        <div class="col-md-12 col">
+          <div class="row justify-content-md-center">
+
+            <div class="col-sm-auto-1" *ngFor="let data of bothBad; index as i">
+
+              <div *ngIf=data.status>
+                <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                        [routerLink]="['/detail',data.key,i+1]"
+                        [queryParams]="data">  {{i + 1}}</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="tab-pane fade show" id="same" role="tabpanel" aria-labelledby="same-tab">
+
+      <div class="container-fluid">
+        <div class="row justify-content-md-center">
+          <h3>Both algorithms are precise</h3>
+        </div>
+
+        <div class="col-md-12 col">
+          <div class="row justify-content-md-center">
+
+            <div class="col-sm-auto-1" *ngFor="let data of same; index as i">
+
+              <div *ngIf=data.status>
+                <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                        [routerLink]="['/detail',data.key,i+1]"
+                        [queryParams]="data">  {{i + 1}}</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="col-md-12 col">
+    <div class="grid ">
+
+      <div class=" align-items-center">
+        <div class="d-flex justify-content-center"><img alt="logo" width="200"
+                                                        class="logo" src="assets/Images/paris1.png">
+
+        </div>
+      </div>
+      <div class="align-items-center">
+
+        <div><br></div>
+        <div class="d-flex justify-content-center"><h3>© 2021 Bashar
+          Alayan</h3></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

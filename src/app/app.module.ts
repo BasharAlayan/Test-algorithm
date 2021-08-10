@@ -16,6 +16,7 @@ import { AllImagesComponent } from './all-images/all-images.component';
 import { TestedComponent } from './tested/tested.component';
 import { AllComponent } from './all/all.component';
 import { ContactComponent } from './contact/contact.component';
+import { AnalysisComponent } from './analysis/analysis.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ContactComponent } from './contact/contact.component';
     TestedComponent,
     AllComponent,
     ContactComponent,
+    AnalysisComponent,
   ],
   imports: [
     BrowserModule,

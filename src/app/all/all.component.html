@@ -15,11 +15,11 @@
 
         <h4></h4>
         <h4>
-          Dans cet experimental, vaous aurez 100 images dans lesquelles vous comparerez deux images et choisirez l’image avec le meilleur point de
+          Dans cet experimental, vous aurez 100 images dans lesquelles vous comparerez deux images et choisirez l’image avec le meilleur point de
           fuite.
         </h4>
         <h4>
-          Si vous avez besoin d'informations, voici <a href="/about">un tutoriel</a> qui explique comment le point de
+          Si vous avez besoin plus d'informations, voici <a href="/about">un tutoriel</a> qui explique comment le point de
           fuite est sélectionné.
         </h4>
       </div>
@@ -34,9 +34,16 @@
         <div class="col-sm-auto-1" *ngFor="let data of allData; index as i">
 
 
-          <button routerLinkActive="active" type="button" class="btn btn-secondary"
-                  [routerLink]="['/detail',data.key,i+1]"
-                  [queryParams]="data">  {{i + 1}}</button>
+          <div *ngIf="data.id%3==0">
+            <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                    [routerLink]="['/detail',data.key,i+1,true]"
+                    [queryParams]="data">  {{i + 1}}</button>
+          </div>
+          <div *ngIf="data.id%3!=0">
+            <button routerLinkActive="active" type="button" class="btn btn-secondary"
+                    [routerLink]="['/detail',data.key,i+1,false]"
+                    [queryParams]="data">  {{i + 1}}</button>
+          </div>
 
 
         </div>
